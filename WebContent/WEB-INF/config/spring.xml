@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"	
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		 http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	
+    <!-- <context:component-scan base-package="com.marketadmin" /> -->
+    <context:annotation-config />
+	<mvc:annotation-driven />
+	
+	<!-- <task:annotation-driven />
+	<bean id="Cronjob" class="com.insurgeadmin.service.impl.Cronjob"></bean> -->
+	
+	<!-- Application Message Bundle -->
+   <!--  <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/resources/messages" />
+        <property name="cacheSeconds" value="3000" />
+    </bean> -->
+
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	 <!-- <bean id="contextSource" class="org.springframework.ldap.core.support.LdapContextSource">
+		<property name="url" value="${ldap.url}" />
+		<property name="base" value="${ldap.base}" />
+		<property name="userDn" value="${ldap.userDn}" />
+		<property name="password" value="${ldap.password}" />
+	</bean>
+	
+	<bean id="ldapTemplate" class="org.springframework.ldap.core.LdapTemplate">
+		<constructor-arg ref="contextSource" />
+		 <property name="ignorePartialResultException" value="true"/>
+	</bean>
+	<bean id="personDao" class="com.insurgeadmin.dao.impl.PersonDaoImpl">
+		<property name="ldapTemplate" ref="ldapTemplate" />
+	</bean> -->
+	
+	<!-- Configure the multipart resolver -->
+    <!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        one of the properties available; the maximum file size in bytes
+        <property name="maxUploadSize" value="1000000000"/>
+        <property name="uploadTempDir" ref="uploadDirResource" />
+    </bean> -->
+
+<!--<bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
+	<constructor-arg>
+		<value>C:/upload_test</value>
+	</constructor-arg>
+	</bean>-->
+
+	<!-- <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject">
+			<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+				<property name="targetClass" value="java.lang.System" />
+				<property name="targetMethod" value="getProperties" />
+			</bean>
+		</property>
+		<property name="targetMethod" value="putAll" />
+		<property name="arguments">
+			<util:properties>
+				<prop key="insurgedefaultimagespath">${path.default}</prop>
+	            <prop key="insurgestudioimagespath">${path.studioimages}</prop>
+	            <prop key="insurgeldapadmingroup">${ldap.admingroup}</prop>
+	            <prop key="insurgeldapreadergroup">${ldap.readergroup}</prop>
+			</util:properties>
+		</property>
+	</bean> -->
+	</beans>
